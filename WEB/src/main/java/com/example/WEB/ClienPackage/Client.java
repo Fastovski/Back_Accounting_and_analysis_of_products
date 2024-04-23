@@ -1,5 +1,7 @@
-package com.example.WEB.ClientPackage;
+package com.example.WEB.ClienPackage;
 
+import com.example.WEB.HistoryPackage.History;
+import com.example.WEB.ProposalPackage.Proposal;
 import com.example.WEB.UserPackage.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -8,26 +10,25 @@ import java.util.Set;
 
 @Entity
 @Table(name = "client")
-
 public class Client {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private  Integer id;
+    private Integer id;
     private Integer cash;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "userId", nullable = false)
     private User userId;
 
-//    @OneToMany(mappedBy = "clientId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private Set<Proposal> proposalId;
-//    @OneToMany(mappedBy = "clientId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private Set<History> historyId;
+    @OneToMany(mappedBy = "clientId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Proposal> proposalId;
+    @OneToMany(mappedBy = "clientId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<History> historyId;
     public Client() {
     }
+
     public Client(Integer id, Integer cash) {
         this.id = id;
         this.cash = cash;
@@ -56,12 +57,11 @@ public class Client {
         this.cash = cash;
     }
 
-//    public Set<Proposal> getProposalId() {
-//        return proposalId;
-//    }
+    public Set<Proposal> getProposalId() {
+        return proposalId;
+    }
 
-//    public void setProposalId(Set<Proposal> proposalId) {
-//        this.proposalId = proposalId;
-//    }
-//}
+    public void setProposalId(Set<Proposal> proposalId) {
+        this.proposalId = proposalId;
+    }
 }

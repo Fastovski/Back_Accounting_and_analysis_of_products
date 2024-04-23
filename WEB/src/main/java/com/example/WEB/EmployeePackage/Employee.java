@@ -1,10 +1,7 @@
 package com.example.WEB.EmployeePackage;
 
 import com.example.WEB.UserPackage.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -13,9 +10,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    private String name;
-
-    private String email;
     private Integer operation;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "userId", nullable = false)

@@ -1,7 +1,8 @@
 package com.example.WEB.UserPackage;
 
-import com.example.WEB.ClientPackage.Client;
+import com.example.WEB.ClienPackage.Client;
 import com.example.WEB.EmployeePackage.Employee;
+import com.example.WEB.UserPackage.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
