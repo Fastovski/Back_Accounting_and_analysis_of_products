@@ -3,8 +3,12 @@ package com.example.WEB.ProposalPackage;
 import com.example.WEB.ClienPackage.Client;
 import com.example.WEB.ClienPackage.ClientRepository;
 import com.example.WEB.ContactPackage.Contract;
+import com.example.WEB.ContactPackage.ContractController;
+import com.example.WEB.ContactPackage.ContractRepository;
 import com.example.WEB.EmployeePackage.EmployeeRepository;
 import com.example.WEB.HistoryPackage.History;
+import com.example.WEB.HistoryPackage.HistoryController;
+import com.example.WEB.HistoryPackage.HistoryRepository;
 import com.example.WEB.UserPackage.User;
 import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +22,15 @@ public class ProposalController {
     private final ProposalRepository proposalRepository;
     private final ClientRepository clientRepository;
     private final EmployeeRepository employeeRepository;
+//    private final HistoryRepository historyRepository;
+//    private final ContractRepository contractRepository;
 
     public ProposalController(ProposalRepository proposalRepository, ClientRepository clientRepository, EmployeeRepository employeeRepository) {
         this.proposalRepository = proposalRepository;
         this.clientRepository = clientRepository;
         this.employeeRepository = employeeRepository;
+//        this.historyRepository = historyRepository; //
+//        this.contractRepository = contractRepository;
     }
 
     @GetMapping("/proposal/all")
@@ -36,9 +44,9 @@ public class ProposalController {
         proposal.setClientId(client);
         History history = new History();
         Date d = new Date();
-        history.setProposalId(proposal);
         history.setClientId(client);
         history.setSending(new java.sql.Date(d.getTime()));
+        history.setProposalId(proposal);
         Contract contract = new Contract();
         contract.setConclusion(new java.sql.Date(d.getTime()));
         contract.setBought(false);

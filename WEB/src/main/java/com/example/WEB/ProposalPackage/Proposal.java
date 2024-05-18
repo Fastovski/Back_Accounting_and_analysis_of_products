@@ -16,8 +16,7 @@ public class Proposal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    private Date start;
-    private Date end;
+    private Date deliveryTime;
     private Integer totalCost;
     private Boolean approve;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -38,10 +37,9 @@ public class Proposal {
     public Proposal() {
     }
 
-    public Proposal(Integer id, Date start, Date end, Integer totalCost, Boolean approve, Client clientId, Products productId) {
+    public Proposal(Integer id, Date deliveryTime, Integer totalCost, Boolean approve, Client clientId, Products productId) {
         this.id = id;
-        this.start = start;
-        this.end = end;
+        this.deliveryTime = deliveryTime;
         this.totalCost = totalCost;
         this.approve = approve;
         this.clientId = clientId;
@@ -56,20 +54,12 @@ public class Proposal {
         this.id = id;
     }
 
-    public Date getStart() {
-        return start;
+    public Date getDeliveryTime() {
+        return deliveryTime;
     }
 
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
     public Integer getTotalCost() {

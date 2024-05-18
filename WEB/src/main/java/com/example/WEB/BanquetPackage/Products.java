@@ -3,7 +3,6 @@ package com.example.WEB.BanquetPackage;
 import com.example.WEB.ProposalPackage.Proposal;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.w3c.dom.Text;
 
 import java.util.Set;
 
