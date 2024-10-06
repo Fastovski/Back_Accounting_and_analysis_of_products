@@ -35,4 +35,8 @@ public class ContractController {
         contractRepository.update(id);
         clientRepository.updateCash(proposal.getTotalCost(), clientRepository.findById(proposal.getClientId().getId()).get().getUserId());
     }
+    @GetMapping("/contract/allPaid")
+    public List<Contract> getAllPaidContracts(){
+        return contractRepository.findAllByBoughtEquals(true);
+    }
 }

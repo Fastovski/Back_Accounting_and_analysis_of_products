@@ -10,6 +10,7 @@ import java.util.List;
 public interface ContractRepository extends JpaRepository<Contract,Integer> {
     public List<Contract> findAllByProposalId_ClientId_UserId_IdAndBoughtEqualsAndProposalId_ApproveEquals(Integer id, Boolean bool, Boolean bol);
     public List<Contract> findAllByBoughtEqualsAndProposalId_ApproveEquals(Boolean bool, Boolean bol);
+    public List<Contract> findAllByBoughtEquals(Boolean bool);
     @Modifying(clearAutomatically = true)
     @Query("UPDATE Contract o set o.bought=true where o.id = ?1")
     public void update(Integer id);
